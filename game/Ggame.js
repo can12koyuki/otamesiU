@@ -118,17 +118,17 @@ colorgame.addEventListener('click', () => {
   console.log("ゲーム")
 })
 
-Rulevideo.addEventListener('click', () => {
-  if(Rulevideo.paused){
-    Rulevideo.play();
-    OKbtn.play();
-    console.log(Rulevideo.paused)
-  }else{
-    Rulevideo.pause();
-    NObtn.play();
-    console.log(Rulevideo.paused)
-  }
-})
+// Rulevideo.addEventListener('click', () => {
+//   if(Rulevideo.paused){
+//     Rulevideo.play();
+//     OKbtn.play();
+//     console.log(Rulevideo.paused)
+//   }else{
+//     Rulevideo.pause();
+//     NObtn.play();
+//     console.log(Rulevideo.paused)
+//   }
+// })
 
 
 // 🌟ゲームスタートボタン
