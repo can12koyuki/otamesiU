@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ビデオ通話</title>
+
+    <!-- Bootstrap(外部CSS)の参照 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- android端末でchromeのURLバーを非表示にする -->
+    <meta name="mobile-web-app-capable" content="yes">
+  </head>
+
+  <body>
+    <!-- チャットログモーダルウィンドウ -->
+    <div id="chatlogModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>チャット履歴</h1>
+          <input type="text" class="chat-box" placeholder="チャット" id="data-stream" />
+          <button type="submit" class="chat-btn" id="write">送信</button>
+        </div>
+        <div class="modal-body">
+          <pre class="logmessages" id="logmessages"></pre>
+        </div>          
+        <div class="modal-footer">
+          <button type="button" class="btn chatlogRe-btn" id="chatlogRe">とじる</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h1 class="heading">ルーム名：<span id="Roomname"></span></h1>
+
+      <div class="room">
+        <div class="video" id="video">
+          <!-- 自分のカメラ映像 -->
+          <video class="my-video" id="local-stream" style="transform: scaleX(-1);"></video>
+          <h1 class="myName">あなた：<span id="my-id"></span></h1>  
+        </div>
+        <button type="submit" class="Room-out" id="leave-trigger">退室</button>
+
+        <!-- 相手のカメラ映像(この中にvideo要素が生成される) -->
+        <div id="remote-streams"></div>
+        
+        <!-- 通話時間表示　※複数人だとバグるため保留 -->
+        <p class="Vtimer">通話時間：<span id="Vtimer"></span></p>
+
+        <!-- チャット送受信 -->
+        <div class="chat">
+          <!-- preタグだと整形済みテキストが表示されるため改行ができない -->
+          <pre class="messages" id="messages"></pre>
+          <button type="submit" class="chatlog-btn" id="chatlog">ログ</button>
+        </div>
+
+        <div class="game">
+          <button type="submit" class="gamestart-btn" id="gamestart">ゲーム</button>
+        </div>
+
+        <button type="submit" class="mute-btn" id="mutebtn">🎙オン</button>
+      </div>
+
+    </div>
+    
+
+    <!-- SkyWayの参照 -->
+    <script src="https://cdn.jsdelivr.net/npm/@skyway-sdk/room/dist/skyway_room-latest.js"></script>
+    
+    <!-- ローマ字変換js -->
+    <script type="module" src="../romagichange.js"></script>
+    <!-- ひらがな変換js -->
+    <script type="module" src="../hiraganachange.js"></script>
+    <!-- 通話時間タイマーjs -->
+    <script type="module" src="../CountUpTimer.js"></script>
+    <!-- メインjs -->
+    <script type="module" src="./video.js"></script>
+
+    <link rel="stylesheet" href="./video.css" />
+    
+    <!-- Bootstrap(外部CSS)の参照 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

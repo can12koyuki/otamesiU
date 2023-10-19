@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ゲームルーム</title>
+
+    <!-- Bootstrap(外部CSS)の参照 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- android端末でchromeのURLバーを非表示にする -->
+    <meta name="mobile-web-app-capable" content="yes">
+  </head>
+
+  <body>
+    <!-- 結果表示(正解・不正解) -->
+    <div id="anserModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="anser"><span id="anser"></span></p>
+            <p class="Sanser">正解：<span id="Sanser"></span></p>
+          </div>          
+          <div class="modal-footer">
+            <button type="button" class="next-btn" id="nextbtn">次の問題</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- 総合成績 -->
+    <div id="totalModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>結果発表！！</h1>
+        </div>
+        <div class="modal-body">
+          <span id="mytotal"></span>
+          <!-- <p class="1st">1位：<span id="1st"></span></p>
+          <p class="2nd">2位：<span id="2nd"></span></p>
+          <p class="3rd">3位：<span id="3rd"></span></p> -->
+        </div>          
+        <div class="modal-footer">
+          <button type="button" class="total-btn" id="totalbtn">とじる</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ルール説明 -->
+    <div id="ruleModal" class="rulemodal">
+      <div class="rulemodal-content">
+        <div class="rulemodal-header">
+          <h1>色あてゲーム</h1>
+        </div>
+        <!-- <img class="zoom" src="./Rule.png"> -->
+        <!-- <video class="zoom" id="rule" src="./Rule.mov" autoplay muted></video> -->
+        <!-- ルール説明スライド -->
+        <!-- スライドショー -->
+        <!-- <div class="center slide">
+          <img class="zoom" id="rule" src="./Rule.png">
+          <img class="zoom" id="rule" src="./Rule.png">
+          <img class="zoom" id="rule" src="./Rule.png">
+          <img class="zoom" id="rule" src="./Rule.png">
+        </div> -->
+
+        <!-- ボタン -->
+        <div class="carousel">
+          <!-- スライド選択用ラジオボタン -->
+          <div class="contains">
+            <input class="slide_select" type="radio" id="SlideA" name="slide_check" checked />
+            <input class="slide_select" type="radio" id="SlideB" name="slide_check" />
+            <input class="slide_select" type="radio" id="SlideC" name="slide_check" />
+            <input class="slide_select" type="radio" id="SlideD" name="slide_check" />
+            
+            <!-- スライド部分（ラジオボタンと同じ数） -->
+            <!-- スライド１（ラジオボタンと同じ数） -->
+            <div class="slide">
+              <div class="scroll_controler">
+                <label class="scroll_button scroll_prev" for="SlideD"></label>
+                <label class="scroll_button scroll_next" for="SlideB"></label>
+              </div>
+              <img class="zoom" id="rule" src="./Rule.png">
+            </div>
+            <!-- スライド２ -->
+            <div class="slide">
+              <div class="scroll_controler">
+                <label class="scroll_button scroll_prev" for="SlideA"></label>
+                <label class="scroll_button scroll_next" for="SlideC"></label>
+              </div>
+              <img class="zoom" id="rule" src="./Rule.png">
+            </div>
+            <!-- スライド３ -->
+            <div class="slide">
+              <div class="scroll_controler">
+                <label class="scroll_button scroll_prev" for="SlideB"></label>
+                <label class="scroll_button scroll_next" for="SlideD"></label>
+              </div>
+              <img class="zoom" id="rule" src="./Rule.png">
+            </div>
+            <!-- スライド４ -->
+            <div class="slide">
+              <div class="scroll_controler">
+                <label class="scroll_button scroll_prev" for="SlideC"></label>
+                <label class="scroll_button scroll_next" for="SlideA"></label>
+              </div>
+              <img class="zoom" id="rule" src="./Rule.png">
+            </div>
+            
+            <!-- スライド移動用ボタン -->
+            <div class="move_controler">
+              <label class="button_move" for="SlideA"></label>
+              <label class="button_move" for="SlideB"></label>
+              <label class="button_move" for="SlideC"></label>
+              <label class="button_move" for="SlideD"></label>
+            </div>
+          </div>
+        </div>
+          
+        <div class="modal-footer">
+          <button type="button" class="gamestart-btn" id="gamestart">はじめる!!</button>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="colorgame-btn" id="colorgame">色当てゲーム</button>
+
+
+    <div class="container">
+        <h1 class="heading"><span id="Roomname"></span></h1>
+  
+        <div class="room">
+          <div class="video" id="video">
+            <!-- 自分のカメラ映像 -->
+            <video class="my-video" id="local-stream" style="transform: scaleX(-1);"></video>
+            <h1 class="myName">あなた：<span id="my-id"></span></h1>  
+          </div>
+          <button type="submit" class="Room-out" id="return-trigger">もどる</button>
+  
+          <!-- 相手のカメラ映像(この中にvideo要素が生成される) -->
+          <div id="remote-streams"></div>
+          
+          <!-- 通話時間表示 -->
+          <p class="Vtimer"><span id="Vtimer"></span></p>
+  
+          <!-- チャット送受信 -->
+          <div class="chat">
+            <!-- preタグだと整形済みテキストが表示されるため改行ができない -->
+            <pre class="messages" id="messages"></pre>
+            <input type="text" class="chat-box" placeholder="チャット" id="data-stream" />
+            <button type="submit" class="chat-btn" id="write">送信</button>
+          </div>
+  
+
+          <div class="game">
+            <!-- 難易度選択ボタン -->
+            <!-- <button type="submit" class="easy-btn" id="gameeasy">やさしい</button>
+            <button type="submit" class="normal-btn" id="gamenormal">ふつう</button>
+            <button type="submit" class="def-btn" id="gamedef">むずかしい</button> -->
+
+            <!-- 問題表示 -->
+            <p class="quest" id="Q"><span id="quest"></span></p>
+
+            <!-- 答え選択 -->
+            <button type="submit" class="sel1-btn" id="selbtn1">あか</button>
+            <button type="submit" class="sel2-btn" id="selbtn2">あお</button>
+            <button type="submit" class="sel3-btn" id="selbtn3">きいろ</button>
+            <button type="submit" class="sel4-btn" id="selbtn4">みどり</button>
+
+            <button type="submit" class="mute-btn" id="mutebtn">🎙オン</button>
+          </div>
+        </div>
+  
+    </div>
+    
+
+    <!-- SkyWayの参照 -->
+    <script src="https://cdn.jsdelivr.net/npm/@skyway-sdk/room/dist/skyway_room-latest.js"></script>
+    
+    <!-- ローマ字変換js -->
+    <script type="module" src="../romagichange.js"></script>
+    <!-- ひらがな変換js -->
+    <script type="module" src="../hiraganachange.js"></script>
+    <!-- ゲーム画面js -->
+    <script type="module" src="./game.js"></script>
+    <!-- ゲーム中身js -->
+    <script type="module" src="./Ggame.js"></script>
+
+    <link rel="stylesheet" href="./game.css" />
+    
+    <!-- Bootstrap(外部CSS)の参照 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

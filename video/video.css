@@ -1,0 +1,350 @@
+/* positionの親 */
+body{
+  position: relative;
+  padding: 5px;
+  padding-left: 10px;
+  text-align: center;
+  overflow: auto;
+  background: linear-gradient(to right, rgb(255, 99, 99, 0.54), rgb(250, 255, 99, 0.54), rgb(99, 255, 107, 0.54), rgb(99, 177, 255, 0.54), rgb(206, 99, 255, 0.54));
+  background-size: 800% 800%;
+  animation: GradietionAnimation 100s ease infinite;
+}  
+@keyframes GradietionAnimation { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.myName{
+  font-size: 150%;
+}
+.their-name1{
+  font-size: 150%;
+}
+.their-name2{
+  font-size: 150%;
+}
+.their-name3{
+  font-size: 150%;
+}
+.their-name4{
+  font-size: 150%;
+}
+.their-name5{
+  font-size: 150%;
+}
+
+/* 中身div */
+.room {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  gap: 8px;
+  font-size: 22px;
+}
+
+/* 通話時間タイマー */
+.Vtimer{
+  position: fixed;
+  bottom: 0%;
+  left: 30%;
+  font-size: 150%;
+  font-weight: bold;
+  border: solid;
+  border:3px solid;
+  border-radius:8px;
+  display:inline-block;
+  background-color: white;
+  width: 330px;
+  word-wrap: break-word;
+}
+
+/* ルーム名表示 */
+.heading {
+  position: fixed;
+  bottom: 1%;
+  right: 15%;
+  border: solid;
+  border:3px solid;
+  border-radius:8px;
+  display:inline-block;
+  background-color: white;
+  font-size: 220%;
+  width: 300px;
+  word-wrap: break-word;
+}
+
+/* ルーム退出ボタン */
+.Room-out{
+  position: fixed;
+  right: 2%;
+  bottom: 2%;
+  color: rgb(0, 0, 0);
+  background-color: #619ffd;
+  font-size: 200%;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+
+/* ミュートボタン */
+.mute-btn{
+  position: fixed;
+  left: 22%;
+  bottom: 2%;
+  color: rgb(0, 0, 0);
+  background-color: #619ffd;
+  font-size: 100%;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+
+
+/* 自分のカメラ映像 */
+.video{
+  position: fixed;
+  top: 1%;
+  left: 2%;
+  width: 250px;
+}
+.my-video{
+  width: 350px;
+  border:6px solid;
+  border-radius:8px;
+  display:inline-block;
+  border-color:darkblue;
+  background-color: white;
+}
+/* 相手のカメラ映像が映る場所 */
+.remote-streams1 {
+  position: fixed;
+  top: 1%;
+  left: 26%;
+  width: 250px;
+}
+.remote-streams2 {
+  position: fixed;
+  top: 1%;
+  right: 27%;
+  width: 250px;
+}
+.remote-streams3 {
+  position: fixed;
+  top: 1%;
+  right: 2%;
+  width: 250px;
+}
+.remote-streams4 {
+  position: fixed;
+  top: 42%;
+  left: 2%;
+  width: 250px;
+}
+.remote-streams5 {
+  position: fixed;
+  top: 42%;
+  left: 26%;
+  width: 250px;
+}
+/* 相手のカメラ映像のサイズ */
+/* ビデオ映像に直接枠線をつける */
+.their-video1{
+  width: 350px;
+  border:6px solid;
+  border-radius:8px;
+  display:inline-block;
+  border-color:chocolate;
+  background-color: white;
+}
+.their-video2{
+  width: 350px;
+  border:6px solid;
+  border-radius:8px;
+  display:inline-block;
+  border-color:chocolate;
+  background-color: white;
+}
+.their-video3{
+  width: 350px;
+  border:6px solid;
+  border-radius:8px;
+  display:inline-block;
+  border-color:chocolate;
+  background-color: white;
+}
+.their-video4{
+  width: 350px;
+  border:6px solid;
+  border-radius:8px;
+  display:inline-block;
+  border-color:chocolate;
+  background-color: white;
+}
+.their-video5{
+  width: 350px;
+  border:6px solid;
+  border-radius:8px;
+  display:inline-block;
+  border-color:chocolate;
+  background-color: white;
+}
+
+
+/* 改行 */
+pre {
+  white-space: pre-wrap;
+}
+
+/* チャットメッセージ */
+.messages{
+  display: none;
+  position: fixed;
+  width: 98%;
+  height: 10%;
+  left: 1%;
+  bottom: 11%;
+  font-size: 180%;
+  text-align: left;
+  font-weight: bold;
+  background-color:rgb(247, 219, 183);
+  border: 1px solid rgb(255, 142, 61);
+}
+/* チャット入力 */
+.chat-box{
+  position: fixed;
+  right: 32%;
+  width: 20%;
+  font-size: 200%;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+/* チャット送信ボタン */
+.chat-btn{
+  font-size: 200%;
+  color: rgb(0, 0, 0);
+  background-color: #ffc400;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+
+/* ログ表示用モーダル */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background-color: #f4f4f4;
+  margin: 5% auto;    
+  width: 60%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+}
+.modal-body {
+  color: black;
+  font-weight: bold;
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+/* ログ用メッセージ */
+.logmessages{
+  font-size: 200%;
+  text-align: left;
+  font-weight: bold;
+  background-color:rgb(247, 219, 183);
+  border: 1px solid rgb(255, 142, 61);
+}
+/* モーダル内もどるボタン */
+.chatlogRe-btn{
+  color: rgb(0, 0, 0);
+  background-color: #ff8800;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  font-size: 180%;
+  border-radius:8px;
+}
+
+/* チャットログ表示ボタン */
+.chatlog-btn{
+  position: fixed;
+  left: 13%;
+  bottom: 2%;
+  font-size: 180%;
+  color: rgb(0, 0, 0);
+  background-color: #ff8800;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+
+/* ゲームボタン */
+.gamestart-btn{
+  position: fixed;
+  left: 1%;
+  bottom: 2%;
+  font-size: 200%;
+  color: rgb(0, 0, 0);
+  background-color: #1aff00;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+
+
+/* 縦 */
+@media screen and (max-height: 500px){
+}
+
+/* 横 */
+@media screen and (max-width: 1400px){
+  .my-video{
+    width: 320px;
+  }
+  .remote-streams1 {
+    top: 1%;
+    left: 35%;
+  }
+  .remote-streams2 {
+    top: 1%;
+    right: 8%;
+  }
+  .remote-streams3 {
+    top: 45%;
+    left: 2%;
+  }
+  .remote-streams4 {
+    top: 45%;
+    left: 35%;
+  }
+  .remote-streams5 {
+    top: 45%;
+    right: 8%;
+  }
+  .their-video1 {
+    width: 320px;
+  }
+  .their-video2 {
+    width: 320px;
+  }
+  .their-video3 {
+    width: 320px;
+  }
+  .their-video4 {
+    width: 320px;
+  }
+  .their-video5 {
+    width: 320px;
+  }
+  .messages{
+    height: 8%;
+    font-size: 150%;
+  }
+}
