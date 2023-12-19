@@ -298,6 +298,19 @@ pre {
   border-radius:8px;
 }
 
+.voice-btn{
+  position: fixed;
+  left: 1%;
+  bottom: 24%;
+  font-size: 200%;
+  color: rgb(0, 0, 0);
+  background-color: #00c3ff;
+  font-weight: bold;
+  border: 2px solid #453a3a;
+  border-radius:8px;
+}
+
+
 
 /* 縦 */
 @media screen and (max-height: 500px){
